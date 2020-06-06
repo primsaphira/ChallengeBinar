@@ -1,4 +1,4 @@
-package com.binar.gamesuit.controller
+package com.binar.gamesuit.service
 
 import com.binar.gamesuit.model.Result
 

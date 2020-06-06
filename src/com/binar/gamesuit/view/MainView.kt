@@ -13,21 +13,27 @@ class MainView : SuitCallback {
 
     fun start() {
 
-        println(" Masukkan pilihan anda ! ")
+        println(" Tentukan pilihan anda sekarang ! ")
         println(" 1. Batu ")
         println(" 2. Gunting ")
         println(" 3. Kertas ")
+        println(" 0. Keluar")
 
         userInput()
-
     }
 
     override fun userInput() {
-
-        print("Masukkan pilihan Anda: ")
-        val player = readLine().toString().toInt()
-        controller.process(player)
-
+        var player = -1
+        do {
+            print("Masukkan pilihan Anda di sini: ")
+            player = readLine().toString().toInt()
+            if (player > 0 && player < 4) {
+                controller.process(player)
+            } else if (player != 0){
+                showWrongInput(Result.WRONG_VALUE.resultValue)
+            }
+        }while (player != 0 )
+        exitGame()
     }
 
     override fun showResult(result: Result) {
@@ -43,19 +49,26 @@ class MainView : SuitCallback {
         println("pilihan computer : $result")
     }
 
+    override fun showHumanChoice(player: String) {
+
+        println("Pilihan anda adalah : $player")
+    }
+
     override fun exitGame() {
         println("Apakah anda ingin keluar dari permainan?")
         println("1. Ya ")
         println("2. Tidak")
         println("pilihan anda: ")
         val exit = readLine()?.toInt()
-        if (exit == 1) {
-            println("SAMPAI JUMPA LAGI DI PERMAINAN BERIKUTNYA")
-        } else {
-            start()
+        when (exit) {
+            1 -> println("SAMPAI JUMPA LAGI DI PERMAINAN BERIKUTNYA!")
+            2 -> start()
+            else -> {
+                println("Pilihan salah, masukkan lagi pilihan anda ! ")
+                exitGame()
+            }
         }
-
-
     }
-
 }
+
+

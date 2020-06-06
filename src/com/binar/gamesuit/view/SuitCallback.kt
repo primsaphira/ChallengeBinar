@@ -6,6 +6,7 @@ interface SuitCallback {
 
     fun userInput()
     fun exitGame()
+    fun showHumanChoice(player: String)
     fun showResult(result: Result)
     fun showWrongInput(wrongValue: String)
     fun showComputerChoice(result: String)
