@@ -46,12 +46,12 @@ class MainView : SuitCallback {
     }
 
     override fun showComputerChoice(result: String) {
-        println("pilihan computer : $result")
+        println("Pilihan pemain 2 [Computer] adalah : $result")
     }
 
     override fun showHumanChoice(player: String) {
 
-        println("Pilihan anda adalah : $player")
+        println("Pilihan pemain 1 [Anda] adalah : $player")
     }
 
     override fun exitGame() {
